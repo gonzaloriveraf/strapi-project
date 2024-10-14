@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "propiedades",
+  "info": {
+    "singularName": "propiedad",
+    "pluralName": "propiedades",
+    "displayName": "propiedad",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "string"
+    },
+    "piscina": {
+      "type": "boolean"
+    },
+    "bano": {
+      "type": "integer"
+    },
+    "dormitorio": {
+      "type": "integer",
+      "required": true
+    },
+    "detalles": {
+      "type": "text"
+    }
+  }
+}
