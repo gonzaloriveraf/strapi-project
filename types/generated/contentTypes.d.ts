@@ -380,6 +380,8 @@ export interface ApiPropiedadPropiedad extends Schema.CollectionType {
     bano: Attribute.Integer;
     dormitorio: Attribute.Integer & Attribute.Required;
     detalles: Attribute.Text;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    precio: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

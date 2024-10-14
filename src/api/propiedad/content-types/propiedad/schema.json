@@ -30,6 +30,20 @@
     },
     "detalles": {
       "type": "text"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "precio": {
+      "type": "integer"
     }
   }
 }
