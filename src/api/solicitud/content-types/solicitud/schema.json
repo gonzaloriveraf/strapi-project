@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "solicitudes",
+  "info": {
+    "singularName": "solicitud",
+    "pluralName": "solicitudes",
+    "displayName": "Solicitud",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clienteNombre": {
+      "type": "string",
+      "required": true
+    },
+    "clienteApellido": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

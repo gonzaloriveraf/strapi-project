@@ -400,6 +400,38 @@ export interface ApiPropiedadPropiedad extends Schema.CollectionType {
   };
 }
 
+export interface ApiSolicitudSolicitud extends Schema.CollectionType {
+  collectionName: 'solicitudes';
+  info: {
+    singularName: 'solicitud';
+    pluralName: 'solicitudes';
+    displayName: 'Solicitud';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clienteNombre: Attribute.String & Attribute.Required;
+    clienteApellido: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::solicitud.solicitud',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::solicitud.solicitud',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -837,6 +869,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::propiedad.propiedad': ApiPropiedadPropiedad;
+      'api::solicitud.solicitud': ApiSolicitudSolicitud;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
