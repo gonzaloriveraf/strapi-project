@@ -362,76 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiPropiedadPropiedad extends Schema.CollectionType {
-  collectionName: 'propiedades';
-  info: {
-    singularName: 'propiedad';
-    pluralName: 'propiedades';
-    displayName: 'propiedad';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    nombre: Attribute.String;
-    descripcion: Attribute.String;
-    piscina: Attribute.Boolean;
-    bano: Attribute.Integer;
-    dormitorio: Attribute.Integer & Attribute.Required;
-    detalles: Attribute.Text;
-    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    precio: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::propiedad.propiedad',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::propiedad.propiedad',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSolicitudSolicitud extends Schema.CollectionType {
-  collectionName: 'solicitudes';
-  info: {
-    singularName: 'solicitud';
-    pluralName: 'solicitudes';
-    displayName: 'Solicitud';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    clienteNombre: Attribute.String & Attribute.Required;
-    clienteApellido: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::solicitud.solicitud',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::solicitud.solicitud',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -858,6 +788,85 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiPropiedadPropiedad extends Schema.CollectionType {
+  collectionName: 'propiedades';
+  info: {
+    singularName: 'propiedad';
+    pluralName: 'propiedades';
+    displayName: 'propiedad';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    descripcion: Attribute.String;
+    piscina: Attribute.Boolean;
+    bano: Attribute.Integer;
+    dormitorio: Attribute.Integer & Attribute.Required;
+    detalles: Attribute.Text;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    precio: Attribute.Integer;
+    tipo: Attribute.Enumeration<['casa', 'departamento']>;
+    ubicacion: Attribute.Enumeration<
+      [
+        'La Serena, Regi\u00F3n de Coquimbo ',
+        'Vi\u00F1a del Mar, Regi\u00F3n de Valpara\u00EDso',
+        'Santiago, Regi\u00F3n Metropolitana ',
+        "Rancagua, Regi\u00F3n de O'Higgins"
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::propiedad.propiedad',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::propiedad.propiedad',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSolicitudSolicitud extends Schema.CollectionType {
+  collectionName: 'solicitudes';
+  info: {
+    singularName: 'solicitud';
+    pluralName: 'solicitudes';
+    displayName: 'Solicitud';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clienteNombre: Attribute.String & Attribute.Required;
+    clienteApellido: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::solicitud.solicitud',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::solicitud.solicitud',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -868,8 +877,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::propiedad.propiedad': ApiPropiedadPropiedad;
-      'api::solicitud.solicitud': ApiSolicitudSolicitud;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -878,6 +885,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::propiedad.propiedad': ApiPropiedadPropiedad;
+      'api::solicitud.solicitud': ApiSolicitudSolicitud;
     }
   }
 }

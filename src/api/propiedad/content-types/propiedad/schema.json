@@ -44,6 +44,22 @@
     },
     "precio": {
       "type": "integer"
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "casa",
+        "departamento"
+      ]
+    },
+    "ubicacion": {
+      "type": "enumeration",
+      "enum": [
+        "La Serena, Región de Coquimbo ",
+        "Viña del Mar, Región de Valparaíso",
+        "Santiago, Región Metropolitana ",
+        "Rancagua, Región de O'Higgins"
+      ]
     }
   }
 }
